@@ -1,6 +1,6 @@
 /* ============================================================
    SmartGás — interações de interface
-   Menu compacto e estado "grudado" da navbar.
+   Menu compacto, estado "grudado" da navbar e o FAQ sanfonado.
    ============================================================ */
 (function () {
   "use strict";
@@ -23,6 +23,34 @@
       links.setAttribute("data-open", "false");
       toggle.setAttribute("aria-expanded", "false");
       toggle.setAttribute("aria-label", "Abrir menu");
+    });
+  }
+
+  /* ---- FAQ sanfonado ----
+     Estados do component set "FAQ / Item" no Figma: Fechado (bg/surface +
+     border/subtle) e Aberto (bg/elevated + brand/primary). A altura anima
+     via grid-template-rows no CSS, então aqui só alternamos a classe e o
+     aria-expanded. */
+  var questions = document.querySelectorAll(".faq-item__q");
+
+  for (var q = 0; q < questions.length; q++) {
+    questions[q].addEventListener("click", function () {
+      var item = this.closest(".faq-item");
+      if (!item) return;
+
+      var willOpen = !item.classList.contains("is-open");
+
+      /* uma resposta aberta por vez, como no protótipo */
+      var others = document.querySelectorAll(".faq-item.is-open");
+      for (var i = 0; i < others.length; i++) {
+        if (others[i] === item) continue;
+        others[i].classList.remove("is-open");
+        var btn = others[i].querySelector(".faq-item__q");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+      }
+
+      item.classList.toggle("is-open", willOpen);
+      this.setAttribute("aria-expanded", String(willOpen));
     });
   }
 

@@ -50,7 +50,22 @@
     }
   }
 
+  /* Duração do DISSOLVE de tema; precisa bater com --motion-theme (280ms). */
+  var THEME_FADE_MS = 280;
+  var fadeTimer = null;
+
   function applyTheme(theme) {
+    /* Arma o cross-fade antes de trocar o valor: a regra de transição já
+       está no estilo computado quando as cores mudam, então elas animam
+       em vez de saltar. */
+    if (!reduced) {
+      root.setAttribute("data-theme-changing", "");
+      clearTimeout(fadeTimer);
+      fadeTimer = setTimeout(function () {
+        root.removeAttribute("data-theme-changing");
+      }, THEME_FADE_MS);
+    }
+
     root.setAttribute("data-theme", theme);
     try {
       localStorage.setItem(STORAGE_KEY, theme);

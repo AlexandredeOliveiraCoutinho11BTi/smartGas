@@ -117,6 +117,37 @@
   --motion-hover: 150ms var(--ease-out);      /* SMART_ANIMATE, hover em geral */
   --motion-overlay: 220ms var(--ease-out);    /* DISSOLVE, modal "Conta" */
   --motion-nav: 250ms var(--ease-in-out);     /* DISSOLVE, navegação entre páginas */
+  --motion-theme: 280ms var(--ease-out);      /* DISSOLVE, troca de tema */
+}
+
+/* ---------- 3b. Troca de tema (DISSOLVE / EASE_OUT / 280ms) ----------
+   O atributo data-theme-changing é posto pelo theme.js só durante a
+   troca, para que o cross-fade não interfira nas demais transições.
+   O !important garante que todo elemento use este mesmo timing na
+   janela de 280ms, em vez do seu próprio. */
+:root[data-theme-changing],
+:root[data-theme-changing] *,
+:root[data-theme-changing] *::before,
+:root[data-theme-changing] *::after {
+  transition:
+    background-color var(--motion-theme),
+    background-image var(--motion-theme),
+    color var(--motion-theme),
+    border-color var(--motion-theme),
+    outline-color var(--motion-theme),
+    box-shadow var(--motion-theme),
+    fill var(--motion-theme),
+    stroke var(--motion-theme) !important;
+  transition-delay: 0s !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme-changing],
+  :root[data-theme-changing] *,
+  :root[data-theme-changing] *::before,
+  :root[data-theme-changing] *::after {
+    transition: none !important;
+  }
 }
 
 /* ---------- 4. Reset ---------- */
@@ -358,12 +389,58 @@ button {
   border: 0;
   background: none;
   color: var(--text-primary);
+
+  /* DISSOLVE / EASE_OUT / 220ms — só opacidade, como no protótipo.
+     `display` e `overlay` precisam de allow-discrete para que o <dialog>
+     continue pintado durante o fade de saída em vez de sumir de imediato. */
+  opacity: 0;
+  /* a 1ª declaração é o fallback: se o navegador não entender
+     allow-discrete, ele descarta só a 2ª e o fade continua funcionando */
+  transition: opacity var(--motion-overlay);
+  transition:
+    opacity var(--motion-overlay),
+    display var(--motion-overlay) allow-discrete,
+    overlay var(--motion-overlay) allow-discrete;
+}
+
+.modal[open] {
+  opacity: 1;
+}
+
+/* estado inicial da animação de entrada */
+@starting-style {
+  .modal[open] {
+    opacity: 0;
+  }
 }
 
 .modal::backdrop {
   background: color-mix(in srgb, var(--bg-canvas) 68%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity var(--motion-overlay);
+  transition:
+    opacity var(--motion-overlay),
+    display var(--motion-overlay) allow-discrete,
+    overlay var(--motion-overlay) allow-discrete;
+}
+
+.modal[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .modal[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal::backdrop {
+    transition: none;
+  }
 }
 
 .modal .panel {
@@ -649,9 +726,13 @@ body:has(dialog[open]) {
   display: flex;
   align-items: center;
   gap: var(--space-5);
-  width: 100%;  
-  line-height: 1.3;
-  letter-spacing: -0.2px;
+  width: 100%;
+  /* pergunta no Figma: 17px Regular / 165%.
+     (o 22px SemiBold de lá pertence ao glifo, não ao texto) */
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
   color: var(--text-primary);
   cursor: pointer;
 }
@@ -832,16 +913,19 @@ body:has(dialog[open]) {
 }
 
 .hero__media {
+  /* 640x440 e raio 36 no Figma ("Imagem hero").
+     Para redimensionar, mexa AQUI: a proporção controla a altura e a
+     largura máxima vem da coluna do .hero__grid (640px). */
+  aspect-ratio: 800 / 640;
   border-radius: var(--radius-image);
   overflow: hidden;
   border: 1px solid var(--border-subtle);
-  
 }
 
 .hero__media img {
-  width: 740px;
+  width: 100%;
   height: 100%;
- 
+  object-fit: cover; /* scaleMode FILL do preenchimento no Figma */
 }
 
 /* ---------- 15. Alternador de tema ---------- */
