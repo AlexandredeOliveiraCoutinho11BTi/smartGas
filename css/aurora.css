@@ -1,0 +1,169 @@
+/* ============================================================
+   SmartGás — Aurora
+   Fundo de orbes em gradiente radial, portado dos component sets
+   "Fundo / Aurora / <Página> <Tema>" do Figma.
+
+   No Figma cada orbe é uma ELIPSE com preenchimento GRADIENT_RADIAL
+   e a mesma escada de 10 paradas de alpha — não há blur de camada,
+   toda a suavidade vem do gradiente.
+
+   Posições em % (centro do orbe) medidas sobre o frame da aurora.
+   ============================================================ */
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden; /* recorta nas bordas do documento, fora da área visível */
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  left: var(--orb-x);
+  top: var(--orb-y);
+  width: var(--orb-size);
+  height: var(--orb-size);
+  /* sem border-radius: o gradiente já termina em transparente na borda,
+     e um recorte extra só poderia devolver uma aresta serrilhada */
+  opacity: var(--orb-opacity);
+  transform: translate(-50%, -50%);
+  will-change: opacity, transform;
+
+  /* Escada de alpha idêntica em todos os orbes (0% → 100%).
+     `closest-side` é obrigatório: sem ele o padrão é `farthest-corner`,
+     que só chega em transparente na quina do elemento (~1,41x o raio).
+     Como o border-radius recorta um círculo no raio, o gradiente seria
+     cortado ainda opaco e apareceria uma bola de borda dura. */
+  background: radial-gradient(
+    circle closest-side,
+    color-mix(in srgb, var(--orb-color) 100%, transparent) 0%,
+    color-mix(in srgb, var(--orb-color) 94%, transparent) 20%,
+    color-mix(in srgb, var(--orb-color) 80%, transparent) 34%,
+    color-mix(in srgb, var(--orb-color) 62%, transparent) 46%,
+    color-mix(in srgb, var(--orb-color) 44%, transparent) 57%,
+    color-mix(in srgb, var(--orb-color) 29%, transparent) 67%,
+    color-mix(in srgb, var(--orb-color) 17%, transparent) 77%,
+    color-mix(in srgb, var(--orb-color) 9%, transparent) 86%,
+    color-mix(in srgb, var(--orb-color) 3%, transparent) 94%,
+    transparent 100%
+  );
+}
+
+/* ---------- Tamanho, cor e opacidade por índice de orbe ---------- */
+.orb--1 {
+  --orb-size: clamp(548px, 76.1vw, 1096px);
+  --orb-color: var(--glow-aurora-1);
+  --orb-opacity: 0.352;
+  --orb-x: 7.92%;
+}
+
+.orb--2 {
+  --orb-size: clamp(707px, 98.2vw, 1414px);
+  --orb-color: var(--glow-aurora-2);
+  --orb-opacity: 0.242;
+  --orb-x: 89.17%;
+}
+
+.orb--3 {
+  --orb-size: clamp(738px, 102.5vw, 1476px);
+  --orb-color: var(--glow-aurora-3);
+  --orb-opacity: 0.242;
+  --orb-x: 13.75%;
+}
+
+.orb--4 {
+  --orb-size: clamp(612px, 85vw, 1224px);
+  --orb-color: var(--glow-aurora-1);
+  --orb-opacity: 0.242;
+  --orb-x: 92.08%;
+}
+
+/* ---------- Posição vertical por página ---------- */
+/* Home */
+[data-page="home"] .orb--1 { --orb-y: 6.31%; }
+[data-page="home"] .orb--2 { --orb-y: 32.85%; }
+[data-page="home"] .orb--3 { --orb-y: 59.36%; }
+[data-page="home"] .orb--4 { --orb-y: 82.27%; }
+
+/* Produto */
+[data-page="produto"] .orb--1 { --orb-y: 12.51%; }
+[data-page="produto"] .orb--2 { --orb-y: 37.51%; }
+[data-page="produto"] .orb--3 { --orb-y: 62.51%; }
+[data-page="produto"] .orb--4 { --orb-y: 87.51%; }
+
+/* Instruções */
+[data-page="instrucoes"] .orb--1 { --orb-y: 12.50%; }
+[data-page="instrucoes"] .orb--2 { --orb-y: 37.51%; }
+[data-page="instrucoes"] .orb--3 { --orb-y: 62.49%; }
+[data-page="instrucoes"] .orb--4 { --orb-y: 87.50%; }
+
+/* Equipe */
+[data-page="equipe"] .orb--1 { --orb-y: 6.70%; }
+[data-page="equipe"] .orb--2 { --orb-y: 33.38%; }
+[data-page="equipe"] .orb--3 { --orb-y: 60.06%; }
+[data-page="equipe"] .orb--4 { --orb-y: 82.73%; }
+
+/* Jogo — só 3 orbes no Figma */
+[data-page="jogo"] .orb--1 { --orb-y: 9.22%; }
+[data-page="jogo"] .orb--2 { --orb-y: 45.12%; }
+[data-page="jogo"] .orb--3 { --orb-y: 81.01%; }
+[data-page="jogo"] .orb--4 { display: none; }
+
+/* Refs — o Orb 4 fica à esquerda dos demais nesta página */
+[data-page="refs"] .orb--1 { --orb-y: 8.50%; }
+[data-page="refs"] .orb--2 { --orb-y: 43.96%; }
+[data-page="refs"] .orb--3 { --orb-y: 79.46%; }
+[data-page="refs"] .orb--4 { --orb-y: 95.83%; --orb-x: 89.17%; }
+
+/* As telas de autenticação e de conta (Acesso, Login, Cadastro,
+   Bem-vindo, Painel, Menu/Conta, Recuperar senha…) não têm aurora
+   no Figma — basta omitir o data-page ou não incluir a .aurora. */
+
+/* ---------- Animação de entrada ---------- */
+/* O estado inicial só é aplicado quando o JS arma a animação
+   (data-motion="armed" no <html>), para que sem JS os orbes
+   apareçam normalmente. */
+/* O transform é escrito por extenso em cada estado (e não via custom
+   property variável) porque propriedades personalizadas não registradas
+   não interpolam — o transform daria um salto em vez de animar. */
+[data-motion="armed"] .orb {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(var(--reveal-shift));
+}
+
+[data-motion] .orb {
+  transition: opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+[data-motion="in"] .orb {
+  opacity: var(--orb-opacity);
+  transform: translate(-50%, -50%);
+}
+
+/* escalonamento leve, na ordem em que os orbes descem a página */
+.orb--1 { transition-delay: 0ms; }
+.orb--2 { transition-delay: 120ms; }
+.orb--3 { transition-delay: 240ms; }
+.orb--4 { transition-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .orb {
+    transition: none !important;
+    transition-delay: 0ms !important;
+    opacity: var(--orb-opacity) !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* Fallback para navegadores sem color-mix(): orbes em cor sólida
+   suave, sem gradiente — o layout continua correto. */
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .orb {
+    background: var(--orb-color);
+    border-radius: 50%; /* aqui o recorte é necessário: cor sólida + blur */
+    filter: blur(180px);
+    opacity: calc(var(--orb-opacity) * 0.8);
+  }
+}

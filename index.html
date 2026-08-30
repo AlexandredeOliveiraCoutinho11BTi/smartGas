@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartGás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/aurora.css">
+  <!-- síncrono de propósito: aplica o tema e arma a aurora antes da primeira pintura -->
+  <script src="js/theme.js"></script>
+
+  <script src="js/aurora.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/conta.js" defer></script>
+</head>
+
+<body data-page="home">
+
+  <div class="aurora" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+    <div class="orb orb--4"></div>
+  </div>
+
+  <div class="page">
+
+    
+    <header class="navbar" id="navbar">
+      <div class="container navbar__inner">
+        <a class="wordmark" href="index.html">SmartGas.</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-links" aria-label="Abrir menu">☰</button>
+
+        <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+          <a href="index.html" aria-current="page">Início</a>
+          <a href="produto.html">Produto</a>
+          <a href="instrucoes.html">Instruções</a>
+          <a href="equipe.html">Equipe</a>
+          <a href="jogo.html">Jogo</a>
+          <a href="refs.html">Refs</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <button id="account-btn" class="btn--ghost" type="button">Conta</button>
+        </div>
+      </div>
+    </header>
+
+    <dialog class="modal" id="account-modal" aria-labelledby="account-title">
+      <div class="panel">
+        <span class="eyebrow">SUA CONTA</span>
+        <h2 class="t-h3" id="account-title">Você não está conectado</h2>
+        <p class="t-body-m modal__text">
+          Entre ou crie uma conta para usar o app SmartGás e o jogo The Last Meds.
+          
+        </p>
+        
+        <div class="modal__actions">
+          <a class="btn btn--primary" href="login.html">Entrar</a>
+          <a class="btn btn--secondary" href="cadastro.html">Criar conta</a>
+        </div>
+
+        <div class="modal__theme">
+          <span class="t-caption">Aparência</span>
+          <div class="modal__seg" role="group" aria-label="Escolha de aparência">
+            <button type="button" class="modal__opt" data-theme-option="dark">Dark</button>
+            <button type="button" class="modal__opt" data-theme-option="light">Light</button>
+          </div>
+        </div>
+
+        <button type="button" class="modal__close" data-close-modal>Fechar</button>
+      </div>
+    </dialog>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow">SMARTGÁS SHIELD</span>
+            <h1 class="t-display">Sua cozinha inteligente. Sua família protegida.</h1>
+            <p class="t-body-l">
+              Controle seu gás com monitoramento em tempo real, alertas de vazamento
+              e desligamento remoto pensado para residências conectadas.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="produto.html">Clique aqui para obter o produto</a>
+              <a class="btn btn--secondary" href="#dna">Saiba mais</a>
+            </div>
+          </div>
+
+          <figure class="hero__media">
+            <img src="assets/img/hero-cozinha.png"
+                 alt="Cozinha residencial com o kit SmartGás instalado junto ao fogão"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="dna">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">DNA SMARTGÁS</span>
+            <h2 class="t-h2">Inovação, tecnologia e segurança</h2>
+            <p class="t-body-m lede">
+              Três pilares guiam a SmartGás: prevenir acidentes, simplificar o controle
+              do botijão e aproximar tecnologia da rotina doméstica.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">T</span>
+              <h3 class="t-h4">Tecnologia</h3>
+              <p class="t-body-s card__body">
+                Sensores, automação e conectividade Wi-Fi trabalham juntos para
+                monitorar o ambiente e o consumo do gás.
+              </p>
+            </span>
+
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">I</span>
+              <h3 class="t-h4">Inovação</h3>
+              <p class="t-body-s card__body">
+                Um kit IoT compacto transforma o fogão tradicional em uma solução
+                inteligente, acessível e prática.
+              </p>
+            </span>
+
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">S</span>
+              <h3 class="t-h4">Segurança</h3>
+              <p class="t-body-s card__body">
+                Alertas e desligamento automático ajudam a reduzir riscos em situações
+                de vazamento ou esquecimento.
+              </p>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="missao">
+        <div class="container grid-2">
+
+          <div class="panel">
+            <span class="eyebrow eyebrow--bare">NOSSA MISSÃO</span>
+            <h2 class="t-h2">Transformar a cozinha tradicional em um ambiente inteligente e seguro.</h2>
+            <p class="t-body-m">
+              A SmartGás combina hardware, sensores e aplicativo para prevenir acidentes,
+              permitir desligamento remoto e temporizado, além de enviar alertas sobre o
+              nível do botijão.
+            </p>
+
+            <div class="metrics">
+              <div class="metric">
+                <span class="metric__value">24/7</span>
+                <span class="metric__label">foco em segurança</span>
+              </div>
+              <div class="metric">
+                <span class="metric__value">IoT</span>
+                <span class="metric__label">controle pelo app</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <span class="eyebrow eyebrow--bare">NOSSA SOLUÇÃO</span>
+            <h3 class="t-h3">Monitoramento, automação e resposta rápida em um único sistema.</h3>
+            <p class="t-body-m">
+              O kit identifica vazamentos, mede o nível do botijão e atua fisicamente no
+              fogão para ampliar a segurança sem exigir troca completa da estrutura da
+              cozinha.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section" id="recursos">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">RECURSOS</span>
+            <h2 class="t-h2">O que o sistema entrega</h2>
+            <p class="t-body-m lede">
+              Funções pensadas para proteger a família e deixar o controle do gás mais
+              claro no dia a dia.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <span class="card__icon" aria-hidden="true">01</span>
+              <h3 class="t-h4">Detecção inteligente de vazamento</h3>
+              <p class="t-body-s card__body">
+                Sensor de gás acompanha o ambiente e dispara alertas quando identifica
+                indícios de vazamento.
+              </p>
+            </div>
+
+            <div class="card">
+              <span class="card__icon" aria-hidden="true">02</span>
+              <h3 class="t-h4">Controle inteligente do fogão</h3>
+              <p class="t-body-s card__body">
+                Atuador permite desligamento automático, remoto ou temporizado conforme
+                o cenário de uso.
+              </p>
+            </div>
+
+            <div class="card">
+              <span class="card__icon" aria-hidden="true">03</span>
+              <h3 class="t-h4">Nível do botijão em tempo real</h3>
+              <p class="t-body-s card__body">
+                Célula de carga estima o peso do botijão e ajuda o usuário a se planejar
+                antes do gás acabar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">PERGUNTAS FREQUENTES</span>
+            <h2 class="t-h2">Dúvidas comuns sobre a SmartGás</h2>
+            <p class="t-body-m lede">
+              Respostas organizadas a partir dos cartões originais do projeto.
+            </p>
+          </div>
+
+          <div class="faq-grid">
+
+            <div class="faq-col">
+              <div class="faq-item">
+                <h3 class="faq-item__heading">
+                  <button class="faq-item__q" type="button"
+                          aria-expanded="false" aria-controls="faq-a1">
+                    <span class="faq-item__q-text">O SmartGás detecta vazamentos?</span>
+                    <span class="faq-item__glyph" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="faq-item__panel" id="faq-a1">
+                  <div class="faq-item__panel-inner">
+                    <p class="t-body-s faq-item__a">
+                      Sim. O sistema usa sensor de gás para identificar alterações no
+                      ambiente e emitir alertas de segurança.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-item__heading">
+                  <button class="faq-item__q" type="button"
+                          aria-expanded="false" aria-controls="faq-a2">
+                    <span class="faq-item__q-text">Como surgiu a ideia do projeto?</span>
+                    <span class="faq-item__glyph" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="faq-item__panel" id="faq-a2">
+                  <div class="faq-item__panel-inner">
+                    <p class="t-body-s faq-item__a">
+                      A ideia nasceu da preocupação com acidentes domésticos provocados por
+                      vazamento de gás de cozinha, uma situação comum em residências
+                      brasileiras e quase sempre percebida tarde demais.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-item__heading">
+                  <button class="faq-item__q" type="button"
+                          aria-expanded="false" aria-controls="faq-a3">
+                    <span class="faq-item__q-text">O produto é destinado para qual público?</span>
+                    <span class="faq-item__glyph" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="faq-item__panel" id="faq-a3">
+                  <div class="faq-item__panel-inner">
+                    <p class="t-body-s faq-item__a">
+                      Famílias, estudantes que moram sozinhos, pequenos restaurantes e
+                      qualquer cozinha que use botijão de GLP e precise de um monitoramento
+                      simples e acessível.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-col">
+              <div class="faq-item">
+                <h3 class="faq-item__heading">
+                  <button class="faq-item__q" type="button"
+                          aria-expanded="false" aria-controls="faq-b1">
+                    <span class="faq-item__q-text">O produto já foi testado?</span>
+                    <span class="faq-item__glyph" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="faq-item__panel" id="faq-b1">
+                  <div class="faq-item__panel-inner">
+                    <p class="t-body-s faq-item__a">
+                      O protótipo está em desenvolvimento e deve passar por validações com
+                      sensores, atuadores e aplicativo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-item__heading">
+                  <button class="faq-item__q" type="button"
+                          aria-expanded="false" aria-controls="faq-b2">
+                    <span class="faq-item__q-text">Quais benefícios o produto oferece?</span>
+                    <span class="faq-item__glyph" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="faq-item__panel" id="faq-b2">
+                  <div class="faq-item__panel-inner">
+                    <p class="t-body-s faq-item__a">
+                      Alerta sonoro e visual imediato, fechamento automático do registro pelo
+                      servo motor e acompanhamento do ambiente pelo aplicativo, tudo com
+                      componentes de baixo custo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="faq-item">
+                <h3 class="faq-item__heading">
+                  <button class="faq-item__q" type="button"
+                          aria-expanded="false" aria-controls="faq-b3">
+                    <span class="faq-item__q-text">Qual é o principal diferencial da solução?</span>
+                    <span class="faq-item__glyph" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div class="faq-item__panel" id="faq-b3">
+                  <div class="faq-item__panel-inner">
+                    <p class="t-body-s faq-item__a">
+                      Além de avisar, o SmartGás age: o ESP32 interrompe o fornecimento de
+                      gás sozinho e envia o estado do ambiente para o aplicativo, sem
+                      depender de alguém estar em casa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <span class="wordmark">SmartGas.</span>
+          <p class="t-body-s">
+            Tecnologia IoT para tornar a cozinha mais segura, conectada e inteligente.
+          </p>
+        </div>
+
+        <nav class="footer__sitemap" aria-label="Mapa do site">
+          <a href="index.html">Início</a>
+          <a href="produto.html">Produto</a>
+          <a href="instrucoes.html">Instruções</a>
+          <a href="equipe.html">Equipe</a>
+          <a href="jogo.html">Jogo</a>
+          <a href="refs.html">Refs</a>
+        </nav>
+
+        <span class="footer__meta">TCC SmartGás • SafeStep • 2026</span>
+      </div>
+    </footer>
+  </div>
+
+
+</body>
+</html>

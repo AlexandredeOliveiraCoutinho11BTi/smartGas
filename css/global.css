@@ -1,0 +1,937 @@
+/* ============================================================
+   SmartGás — CSS global
+   Tokens portados do Figma (arquivo smartGas, fileKey RuCBuh9LRVSl0ZX6xgzeC5)
+   Modos do Figma: Dark (padrão) e Light
+   ============================================================ */
+
+/* ---------- 1. Tokens de cor — modo Dark (padrão) ---------- */
+:root {
+  --bg-canvas: #1a1c1e;
+  --bg-surface: #24282c;
+  --bg-elevated: #2f3439;
+
+  --text-primary: #ffffff;
+  --text-secondary: #c4cbd4;
+  --text-muted: #8d97a3;
+  --text-on-brand: #0b1220;
+
+  --brand-primary: #7da2ff;
+  --brand-soft: #24314f;
+  --brand-on-soft: #afc5ff;
+
+  --border-subtle: #3a4046;
+  --border-strong: #4e555d;
+
+  --glow-aurora-1: #7da2ff;
+  --glow-aurora-2: #22d3ee;
+  --glow-aurora-3: #a78bfa;
+
+  color-scheme: dark;
+}
+
+/* ---------- 2. Tokens de cor — modo Light ---------- */
+:root[data-theme="light"] {
+  --bg-canvas: #f5f7fa;
+  --bg-surface: #ffffff;
+  --bg-elevated: #edf1f7;
+
+  --text-primary: #101418;
+  --text-secondary: #414b58;
+  --text-muted: #6b7686;
+  --text-on-brand: #ffffff;
+
+  --brand-primary: #2b5fd9;
+  --brand-soft: #e4ecff;
+  --brand-on-soft: #2b5fd9;
+
+  --border-subtle: #e1e7f0;
+  --border-strong: #c7d0dd;
+
+  --glow-aurora-1: #2b5fd9;
+  --glow-aurora-2: #7c3aed;
+  --glow-aurora-3: #0ea5e9;
+
+  color-scheme: light;
+}
+
+/* Segue o sistema quando o usuário ainda não escolheu um tema */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg-canvas: #f5f7fa;
+    --bg-surface: #ffffff;
+    --bg-elevated: #edf1f7;
+
+    --text-primary: #101418;
+    --text-secondary: #414b58;
+    --text-muted: #6b7686;
+    --text-on-brand: #ffffff;
+
+    --brand-primary: #2b5fd9;
+    --brand-soft: #e4ecff;
+    --brand-on-soft: #2b5fd9;
+
+    --border-subtle: #e1e7f0;
+    --border-strong: #c7d0dd;
+
+    --glow-aurora-1: #2b5fd9;
+    --glow-aurora-2: #7c3aed;
+    --glow-aurora-3: #0ea5e9;
+
+    color-scheme: light;
+  }
+}
+
+/* ---------- 3. Tokens de forma e espaço ---------- */
+:root {
+  --radius-pill: 999px;
+  --radius-card: 28px;
+  --radius-card-lg: 32px;
+  --radius-faq: 20px;
+  --radius-tile: 20px;
+  --radius-icon: 18px;
+  --radius-image: 36px;
+
+  --container: 1200px;
+  --gutter: 24px;
+
+  /* escala de espaçamento usada nas seções do Figma */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 56px;
+  --space-9: 80px;
+  --space-10: 120px;
+
+  /* animação de entrada (mesmos valores do protótipo do Figma) */
+  --reveal-shift: 70px;
+  --reveal-duration: 1.2s;
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* timings do protótipo Figma (node.reactions) */
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --motion-hover: 150ms var(--ease-out);      /* SMART_ANIMATE, hover em geral */
+  --motion-overlay: 220ms var(--ease-out);    /* DISSOLVE, modal "Conta" */
+  --motion-nav: 250ms var(--ease-in-out);     /* DISSOLVE, navegação entre páginas */
+}
+
+/* ---------- 4. Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative; 
+  margin: 0;
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.t-display {
+  font-size: clamp(38px, 3.9vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+}
+
+.t-h2 {
+  font-size: clamp(30px, 2.8vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+
+.t-h3 {
+  font-size: clamp(24px, 1.95vw, 28px);
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+}
+
+.t-h4 {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.t-body-l {
+  font-size: clamp(18px, 1.4vw, 20px);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.t-body-m {
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.t-body-s {
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.t-nav {
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.t-button {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.t-caption {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text-secondary)
+}
+
+/* ---------- 6. Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.page {
+  position: relative;
+  z-index: 1; /* acima da camada de aurora */
+}
+
+.section {
+  padding-block: clamp(56px, 6vw, 88px);
+}
+
+.section-head {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-7);
+}
+
+.section-head .lede {
+  color: var(--text-secondary);
+}
+
+/* ---------- 7. Etiqueta (Label/Eyebrow) ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 1.12px;
+  color: var(--brand-on-soft);
+  background: var(--brand-soft);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+}
+
+.eyebrow--bare {
+  background: none;
+  padding: 0;
+  color: var(--brand-primary);
+}
+
+/* ---------- 8. Botões ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  border-radius: var(--radius-pill);
+  padding: 16px 24px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 600;
+  transition: transform 0.18s var(--ease-out), filter 0.18s ease, background-color 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  background: var(--brand-primary);
+  color: var(--text-on-brand);
+}
+
+.btn--primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn--secondary {
+  background: var(--brand-soft);
+  color: var(--brand-on-soft);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn--secondary:hover {
+  border-color: var(--border-strong);
+}
+
+.btn--ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.btn--ghost:hover {
+  color: var(--text-primary);
+}
+
+/* ---------- 8b. Modal (<dialog> nativo) ----------
+   O painel reaproveita .panel, e o conteúdo usa .eyebrow, .btn e .t-*.
+   Aqui só fica o que o <dialog> em si precisa. */
+.modal {
+  width: min(440px, calc(100% - 32px));
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+}
+
+.modal::backdrop {
+  background: color-mix(in srgb, var(--bg-canvas) 68%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal .panel {
+  gap: var(--space-2);
+}
+
+.modal__text {
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-3);
+}
+
+.modal__actions {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+/* linha de aparência */
+.modal__theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.modal__seg {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-pill);
+}
+
+.modal__opt {
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.modal__opt[aria-pressed="true"] {
+  background: var(--brand-primary);
+  color: var(--text-on-brand);
+}
+
+.modal__close {
+  align-self: center;
+  margin-top: var(--space-1);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.modal__close:hover {
+  color: var(--text-primary);
+}
+
+/* trava a rolagem do fundo enquanto o modal está aberto */
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* ---------- 9. Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding-block: var(--space-4);
+  background: color-mix(in srgb, var(--bg-canvas) 72%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.navbar.is-stuck {
+  border-bottom-color: var(--border-subtle);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  min-height: 72px;
+}
+
+.wordmark {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  color: var(--text-primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-inline: auto;
+}
+
+.nav-links a {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--motion-hover);
+}
+
+.nav-links a:hover {
+  color: var(--brand-primary);
+}
+
+/* ponto indicador — 6px, mesma cor da marca (era um SVG no Figma) */
+.nav-links a::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  opacity: 0;
+  transition: opacity var(--motion-hover);
+}
+
+/* hover: ponto surge em opacidade reduzida (0.45 no protótipo) */
+.nav-links a:hover::after {
+  opacity: 0.45;
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--brand-primary);
+}
+
+/* declarada depois de :hover::after — precisa vencer o empate de
+   especificidade quando o link ativo também está em hover */
+.nav-links a[aria-current="page"]::after {
+  opacity: 1;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* ---------- 10. Cards ---------- */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform 0.25s var(--reveal-ease), border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+}
+
+.card__icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-icon);
+  background: var(--brand-soft);
+  color: var(--brand-on-soft);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.card__body {
+  color: var(--text-secondary);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+/* ---------- 11. Painéis (Missão / Solução) ---------- */
+.panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card-lg);
+  padding: clamp(28px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.panel p {
+  color: var(--text-secondary);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.metric {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-tile);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric__value {
+  font-size: 28px;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+  color: var(--brand-primary);
+}
+
+.metric__label {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* ---------- 12. FAQ ---------- */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.faq-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.faq-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-faq);
+  padding: var(--space-5);
+  /* box-shadow simula a borda de 1.5px do estado aberto sem gerar shift
+     de layout que a mudança de border-width provocaria */
+  box-shadow: 0 0 0 0 transparent;
+  transition:
+    background-color var(--motion-hover),
+    border-color var(--motion-hover),
+    box-shadow var(--motion-hover);
+}
+
+.faq-item.is-open {
+  background: var(--bg-elevated);
+  border-color: var(--brand-primary);
+  box-shadow: inset 0 0 0 0.5px var(--brand-primary);
+}
+
+/* botão da pergunta — herda o layout e reseta a aparência de <button> */
+.faq-item__q {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;  
+  line-height: 1.3;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.faq-item__q:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.faq-item__q-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 17px;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ícone plus/minus (dois traços que se cruzam; o vertical gira até coincidir
+   com o horizontal no estado aberto, virando "−") */
+.faq-item__glyph {
+  flex: none;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  color: var(--brand-primary);
+}
+
+.faq-item__glyph::before,
+.faq-item__glyph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform var(--motion-hover);
+}
+
+.faq-item__glyph::before { /* barra horizontal */
+  width: 20px;
+  height: 2.5px;
+}
+
+.faq-item__glyph::after {  /* barra vertical → gira sobre a horizontal */
+  width: 2.5px;
+  height: 20px;
+}
+
+.faq-item.is-open .faq-item__glyph::after {
+  transform: rotate(90deg);
+}
+
+/* painel da resposta — grid-template-rows anima de 0fr → 1fr, o que
+   permite abrir/fechar sem depender da altura conhecida do conteúdo */
+.faq-item__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--motion-hover);
+}
+
+.faq-item.is-open .faq-item__panel {
+  grid-template-rows: 1fr;
+}
+
+/* visibility tira a resposta fechada da árvore de acessibilidade;
+   ela é transicionável e só vira "hidden" ao fim do fechamento */
+.faq-item__panel-inner {
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility var(--motion-hover);
+}
+
+.faq-item.is-open .faq-item__panel-inner {
+  visibility: visible;
+}
+
+.faq-item__heading {
+  margin: 0;
+  font: inherit;
+}
+
+.faq-item__a {
+  margin: 0;
+  padding-top: var(--space-3);
+  color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-item,
+  .faq-item__panel,
+  .faq-item__glyph::before,
+  .faq-item__glyph::after {
+    transition: none;
+  }
+}
+
+/* ---------- 13. Rodapé ---------- */
+.footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  padding-block: clamp(40px, 4vw, 56px);
+}
+
+.footer__inner {
+  display: flex;
+  gap: var(--space-7);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 320px;
+}
+
+.footer__brand .wordmark {
+  font-size: 28px;
+}
+
+.footer__brand p {
+  color: var(--text-secondary);
+}
+
+.footer__sitemap {
+  display: flex;
+  gap: var(--space-2) var(--space-5);
+  margin-inline: auto;
+  padding-top: var(--space-6);
+}
+
+.footer__sitemap a {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.footer__sitemap a:hover {
+  color: var(--text-primary);
+}
+
+.footer__meta {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+  align-self: center;
+}
+
+/* ---------- 14. Hero ---------- */
+.hero {
+  padding-top: clamp(48px, 5vw, 72px);
+  padding-bottom: clamp(56px, 6vw, 88px);
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 560px) minmax(0, 640px);
+  gap: clamp(32px, 4vw, 56px);
+  align-items: center;
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.hero__copy p {
+  color: var(--text-secondary);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.hero__media {
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  
+}
+
+.hero__media img {
+  width: 740px;
+  height: 100%;
+ 
+}
+
+/* ---------- 15. Alternador de tema ---------- */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+  font-size: 15px;
+  transition: color 3s ease, background-color 1.2s ease, border-color 1.2s ease;
+
+}
+
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--brand-primary);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ---------- 16. Responsivo ---------- */
+@media (max-width: 1080px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-links {
+    position: fixed;
+    inset: 72px 0 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin: 0;
+    padding: var(--space-6) var(--gutter);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .nav-links[data-open="true"] {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    flex-direction: row;
+  }
+
+  .nav-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    margin-left: auto;
+    
+  }
+
+  .grid-3,
+  .grid-2,
+  .faq-grid,
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+  }
+
+  .footer__sitemap {
+    margin-inline: 0;
+  }
+}
