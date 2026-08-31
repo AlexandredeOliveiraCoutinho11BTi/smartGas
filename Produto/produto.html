@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartGás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/aurora.css">
+  <link rel="stylesheet" href="./produto.css">
+  <script src="../js/theme.js"></script>
+
+  <script src="../js/aurora.js" defer></script>
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/conta.js" defer></script>
+</head>
+
+<body data-page="produto">
+
+  <div class="aurora" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+    <div class="orb orb--4"></div>
+  </div>
+
+  <div class="page">
+
+    
+    <header class="navbar" id="navbar">
+      <div class="container navbar__inner">
+        <a class="wordmark" href="../index.html">SmartGas.</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-links" aria-label="Abrir menu">☰</button>
+
+        <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+          <a href="../index.html">Início</a>
+          <a href="./produto.html" aria-current="page">Produto</a>
+          <a href="../instrucoes.html">Instruções</a>
+          <a href="../equipe.html">Equipe</a>
+          <a href="../jogo.html">Jogo</a>
+          <a href="../refs.html">Refs</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <button id="account-btn" class="btn--ghost" type="button">Conta</button>
+        </div>
+      </div>
+    </header>
+
+    <dialog class="modal" id="account-modal" aria-labelledby="account-title">
+      <div class="panel">
+        <span class="eyebrow">SUA CONTA</span>
+        <h2 class="t-h3" id="account-title">Você não está conectado</h2>
+        <p class="t-body-m modal__text">
+          Entre ou crie uma conta para usar o app SmartGás e o jogo The Last Meds.
+        </p>
+
+        <div class="modal__actions">
+          <a class="btn btn--primary" href="../login.html">Entrar</a>
+          <a class="btn btn--secondary" href="../cadastro.html">Criar conta</a>
+        </div>
+
+        <div class="modal__theme">
+          <span class="t-caption">Aparência</span>
+          <div class="modal__seg" role="group" aria-label="Escolha de aparência">
+            <button type="button" class="modal__opt" data-theme-option="dark">Dark</button>
+            <button type="button" class="modal__opt" data-theme-option="light">Light</button>
+          </div>
+        </div>
+
+        <button type="button" class="modal__close" data-close-modal>Fechar</button>
+      </div>
+    </dialog>
+
+    <main>
+        <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow">PRODUTO</span>
+            <h1 class="t-display">O controle do seu gás de onde você estiver</h1>
+            <p class="t-body-l">
+              O smartGas Shield monitora o nível do gás, detecta vazamentos e permite desligar o fogão pelo celular com uma experiência simples e segura.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="./produto.html">Quero comprar</a>
+              <a class="btn btn--secondary" href="#Funcionamento">Saiba mais</a>
+              <a class="btn btn--secondary" href="../conta/conta.html">Acessar o app</a>
+            </div>
+          </div>
+
+           <figure class="hero__media hero__media--auto">
+            
+            <img src="../assets/img/Produto/Imagem hero.svg"
+            width= '550' height = '460'
+                 alt="Cozinha residencial com o kit SmartGás instalado junto ao fogão"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="Funcionamento">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">FUNCIONAMENTO</span>
+            <h2 class="t-h2">Confira como funciona nosso produto</h2>
+            <p class="t-body-m lede">
+              A central reúne sensores e atuadores calibrados para interpretar
+               sinais do ambiente e reagir automaticamente quando necessário.
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">G</span>
+              <h3 class="t-h4">Sensor de gás</h3>
+              <p class="t-body-s card__body">
+                Detecta possíveis vazamentos e aciona alertas para o usuário.
+              </p>
+            </span>
+
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">M</span>
+              <h3 class="t-h4">Servo motor</h3>
+              <p class="t-body-s card__body">
+                Atua mecanicamnete no botão do fogão para auxiliar no desligamento.
+              </p>
+            </span>
+
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">P</span>
+              <h3 class="t-h4">Célula de carga</h3>
+              <p class="t-body-s card__body">
+                Mede o peso do botijão para estimar o nível disponível.
+              </p>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="componentes">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">FUNCIONAMENTO</span>
+            <h2 class="t-h2">Confira como funciona nosso produto</h2>
+            <p class="t-body-m lede">
+              A central reúne sensores e atuadores calibrados para interpretar
+               sinais do ambiente e reagir automaticamente quando necessário.
+            </p>
+          </div>
+
+          <div class="grid-3-2">
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">G</span>
+              <h3 class="t-h4">Sensor de gás</h3>
+              <p class="t-body-s card__body">
+                Detecta possíveis vazamentos e aciona alertas para o usuário.
+              </p>
+            </span>
+
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">M</span>
+              <h3 class="t-h4">Servo motor</h3>
+              <p class="t-body-s card__body">
+                Atua mecanicamnete no botão do fogão para auxiliar no desligamento.
+              </p>
+            </span>
+
+            <span class="card">
+              <span class="card__icon" aria-hidden="true">P</span>
+              <h3 class="t-h4">Célula de carga</h3>
+              <p class="t-body-s card__body">
+                Mede o peso do botijão para estimar o nível disponível.
+              </p>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="materiais">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">LISTA DE MATERIAIS</span>
+            <h2 class="t-h2">Instalação de forma prática e eficiente</h2>
+            <p class="t-body-m lede">
+              Onze componentes de prateleira, sem peças sob encomenda.
+              Os valores são médias de mercado e podem variar conforme o fornecedor.
+            </p>
+          </div>
+
+          <div class="materials">
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto.svg" alt="Placa ESP32" />
+              <h3 class="item__title">ESP 32</h3>
+              <p class="material__desc">
+                O cérebro do projeto: lê o sensor e comanda todos os atuadores.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 45,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-1.svg" alt="Sensor de gás MQ-2" />
+              <h3 class="item__title">Sensor MQ-2</h3>
+              <p class="material__desc">
+                Detecta GLP no ar e dispara o alerta de vazamento.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 15,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-2.svg" alt="Célula de carga de 5 kg" />
+              <h3 class="item__title">Célula de carga 5 kg</h3>
+              <p class="material__desc">
+                Mede o peso do botijão para estimar o gás restante.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 25,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-3.svg" alt="Módulo amplificador HX711" />
+              <h3 class="item__title">Módulo HX711</h3>
+              <p class="material__desc">
+                Amplifica e converte o sinal da célula de carga para o ESP32.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 12,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-4.svg" alt="Servo motor SG90" />
+              <h3 class="item__title">Servo motor SG90</h3>
+              <p class="material__desc">
+                Gira o registro do fogão para fechar o gás automaticamente.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 20,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-5.svg" alt="Buzzer ativo de 5 volts" />
+              <h3 class="item__title">Buzzer 5 V</h3>
+              <p class="material__desc">
+                Alarme sonoro local, para quem estiver dentro de casa.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 5,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-6.svg" alt="Display OLED de 0,96 polegada" />
+              <h3 class="item__title">Display OLED 0,96"</h3>
+              <p class="material__desc">
+                Mostra o nível do botijão e o status do sistema na parede.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 35,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-7.svg" alt="Protoboard de 830 pontos" />
+              <h3 class="item__title">Protoboard 830 pts</h3>
+              <p class="material__desc">
+                Base de montagem do circuito, sem necessidade de solda.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 22,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-8.svg" alt="Kit de cabos jumper" />
+              <h3 class="item__title">Kit de jumpers</h3>
+              <p class="material__desc">
+                Conexões entre a placa, os sensores e os atuadores.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 18,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-9.svg" alt="Fonte de 5 volts e 2 amperes" />
+              <h3 class="item__title">Fonte 5 V / 2 A</h3>
+              <p class="material__desc">
+                Alimenta a central ligada na tomada, em operação contínua.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 30,00</span>
+              </p>
+            </span>
+
+            <span class="material__container">
+              <img src="../assets/img/Produto/Card/Foto-10.svg" alt="Caixa de proteção em ABS" />
+              <h3 class="item__title">Caixa de proteção</h3>
+              <p class="material__desc">
+                Abriga a eletrônica e protege o conjunto contra calor e gordura.
+              </p>
+              <p class="text__value">
+                VALOR MÉDIO: <span class="text__price">R$ 28,00</span>
+              </p>
+            </span>
+
+            <span class="material__container material__container--total">
+              <div class="material-total">
+                <h2 class="materials__total-label">TOTAL DO PROJETO</h2>
+                <p class="material-total__price">R$ 273,00</p>
+                <p class="material-total__note">11 componentes · valores médios · protótipo montado</p>
+              </div>
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <span class="wordmark">SmartGas.</span>
+          <p class="t-body-s">
+            Tecnologia IoT para tornar a cozinha mais segura, conectada e inteligente.
+          </p>
+        </div>
+
+        <nav class="footer__sitemap" aria-label="Mapa do site">
+          <a href="../index.html">Início</a>
+          <a href="./produto.html">Produto</a>
+          <a href="../instrucoes.html">Instruções</a>
+          <a href="../equipe.html">Equipe</a>
+          <a href="../jogo.html">Jogo</a>
+          <a href="../refs.html">Refs</a>
+        </nav>
+
+        <span class="footer__meta">TCC SmartGás • SafeStep • 2026</span>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

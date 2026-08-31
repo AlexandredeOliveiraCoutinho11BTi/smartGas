@@ -1,7 +1,5 @@
 /* ============================================================
-   SmartGás — CSS global
-   Tokens portados do Figma (arquivo smartGas, fileKey RuCBuh9LRVSl0ZX6xgzeC5)
-   Modos do Figma: Dark (padrão) e Light
+   |||||||||||||||| SmartGás — CSS global |||||||||||||||||||||               
    ============================================================ */
 
 /* ---------- 1. Tokens de cor — modo Dark (padrão) ---------- */
@@ -150,7 +148,7 @@
   }
 }
 
-/* ---------- 4. Reset ---------- */
+
 *,
 *::before,
 *::after {
@@ -274,7 +272,7 @@ button {
   color: var(--text-secondary)
 }
 
-/* ---------- 6. Layout ---------- */
+
 .container {
   width: 100%;
   max-width: var(--container);
@@ -284,7 +282,7 @@ button {
 
 .page {
   position: relative;
-  z-index: 1; /* acima da camada de aurora */
+  z-index: 1; 
 }
 
 .section {
@@ -303,7 +301,7 @@ button {
   color: var(--text-secondary);
 }
 
-/* ---------- 7. Etiqueta (Label/Eyebrow) ---------- */
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -324,7 +322,6 @@ button {
   color: var(--brand-primary);
 }
 
-/* ---------- 8. Botões ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -379,9 +376,7 @@ button {
   color: var(--text-primary);
 }
 
-/* ---------- 8b. Modal (<dialog> nativo) ----------
-   O painel reaproveita .panel, e o conteúdo usa .eyebrow, .btn e .t-*.
-   Aqui só fica o que o <dialog> em si precisa. */
+
 .modal {
   width: min(440px, calc(100% - 32px));
   max-width: none;
@@ -389,13 +384,7 @@ button {
   border: 0;
   background: none;
   color: var(--text-primary);
-
-  /* DISSOLVE / EASE_OUT / 220ms — só opacidade, como no protótipo.
-     `display` e `overlay` precisam de allow-discrete para que o <dialog>
-     continue pintado durante o fade de saída em vez de sumir de imediato. */
   opacity: 0;
-  /* a 1ª declaração é o fallback: se o navegador não entender
-     allow-discrete, ele descarta só a 2ª e o fade continua funcionando */
   transition: opacity var(--motion-overlay);
   transition:
     opacity var(--motion-overlay),
@@ -407,7 +396,7 @@ button {
   opacity: 1;
 }
 
-/* estado inicial da animação de entrada */
+
 @starting-style {
   .modal[open] {
     opacity: 0;
@@ -459,7 +448,7 @@ button {
   margin-top: var(--space-2);
 }
 
-/* linha de aparência */
+
 .modal__theme {
   display: flex;
   align-items: center;
@@ -504,12 +493,12 @@ button {
   color: var(--text-primary);
 }
 
-/* trava a rolagem do fundo enquanto o modal está aberto */
+
 body:has(dialog[open]) {
   overflow: hidden;
 }
 
-/* ---------- 9. Navbar ---------- */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -565,7 +554,7 @@ body:has(dialog[open]) {
   color: var(--brand-primary);
 }
 
-/* ponto indicador — 6px, mesma cor da marca (era um SVG no Figma) */
+
 .nav-links a::after {
   content: "";
   width: 6px;
@@ -576,7 +565,7 @@ body:has(dialog[open]) {
   transition: opacity var(--motion-hover);
 }
 
-/* hover: ponto surge em opacidade reduzida (0.45 no protótipo) */
+
 .nav-links a:hover::after {
   opacity: 0.45;
 }
@@ -585,8 +574,7 @@ body:has(dialog[open]) {
   color: var(--brand-primary);
 }
 
-/* declarada depois de :hover::after — precisa vencer o empate de
-   especificidade quando o link ativo também está em hover */
+
 .nav-links a[aria-current="page"]::after {
   opacity: 1;
 }
@@ -595,7 +583,7 @@ body:has(dialog[open]) {
   display: none;
 }
 
-/* ---------- 10. Cards ---------- */
+
 .card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -641,7 +629,7 @@ body:has(dialog[open]) {
   gap: var(--space-5);
 }
 
-/* ---------- 11. Painéis (Missão / Solução) ---------- */
+
 .panel {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -686,7 +674,7 @@ body:has(dialog[open]) {
   color: var(--text-muted);
 }
 
-/* ---------- 12. FAQ ---------- */
+
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -720,15 +708,12 @@ body:has(dialog[open]) {
   box-shadow: inset 0 0 0 0.5px var(--brand-primary);
 }
 
-/* botão da pergunta — herda o layout e reseta a aparência de <button> */
 .faq-item__q {
   all: unset;
   display: flex;
   align-items: center;
   gap: var(--space-5);
   width: 100%;
-  /* pergunta no Figma: 17px Regular / 165%.
-     (o 22px SemiBold de lá pertence ao glifo, não ao texto) */
   font-family: inherit;
   font-size: 17px;
   line-height: 1.65;
@@ -750,8 +735,7 @@ body:has(dialog[open]) {
   font-family: 'Jost', sans-serif;
 }
 
-/* ícone plus/minus (dois traços que se cruzam; o vertical gira até coincidir
-   com o horizontal no estado aberto, virando "−") */
+/* FAQ plus minus */
 .faq-item__glyph {
   flex: none;
   position: relative;
@@ -771,12 +755,12 @@ body:has(dialog[open]) {
   transition: transform var(--motion-hover);
 }
 
-.faq-item__glyph::before { /* barra horizontal */
+.faq-item__glyph::before { 
   width: 20px;
   height: 2.5px;
 }
 
-.faq-item__glyph::after {  /* barra vertical → gira sobre a horizontal */
+.faq-item__glyph::after { 
   width: 2.5px;
   height: 20px;
 }
@@ -785,8 +769,7 @@ body:has(dialog[open]) {
   transform: rotate(90deg);
 }
 
-/* painel da resposta — grid-template-rows anima de 0fr → 1fr, o que
-   permite abrir/fechar sem depender da altura conhecida do conteúdo */
+
 .faq-item__panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -797,8 +780,7 @@ body:has(dialog[open]) {
   grid-template-rows: 1fr;
 }
 
-/* visibility tira a resposta fechada da árvore de acessibilidade;
-   ela é transicionável e só vira "hidden" ao fim do fechamento */
+
 .faq-item__panel-inner {
   overflow: hidden;
   visibility: hidden;
@@ -829,7 +811,7 @@ body:has(dialog[open]) {
   }
 }
 
-/* ---------- 13. Rodapé ---------- */
+
 .footer {
   background: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
@@ -882,7 +864,6 @@ body:has(dialog[open]) {
   align-self: center;
 }
 
-/* ---------- 14. Hero ---------- */
 .hero {
   padding-top: clamp(48px, 5vw, 72px);
   padding-bottom: clamp(56px, 6vw, 88px);
@@ -912,23 +893,35 @@ body:has(dialog[open]) {
   margin-top: var(--space-1);
 }
 
+/* Caixa de imagem parametrizável.
+   Cada página sobrescreve só as variáveis no seu CSS próprio:
+   --media-ratio: proporção da caixa (ex.: 500 / 450, ou "auto")
+   --media-fit:   cover = preenche e corta | contain = cabe inteira, sem corte */
 .hero__media {
-  /* 640x440 e raio 36 no Figma ("Imagem hero").
-     Para redimensionar, mexa AQUI: a proporção controla a altura e a
-     largura máxima vem da coluna do .hero__grid (640px). */
-  aspect-ratio: 800 / 640;
+  aspect-ratio: var(--media-ratio, 800 / 640);
   border-radius: var(--radius-image);
   overflow: hidden;
   border: 1px solid var(--border-subtle);
 }
 
 .hero__media img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* scaleMode FILL do preenchimento no Figma */
+  object-fit: var(--media-fit, cover);
 }
 
-/* ---------- 15. Alternador de tema ---------- */
+/* Modificador: a própria imagem define a altura.
+   Use quando não souber/não quiser fixar a proporção — nunca corta. */
+.hero__media--auto {
+  aspect-ratio: auto;
+}
+
+.hero__media--auto img {
+  height: auto;
+}
+
+
 .theme-toggle {
   display: inline-grid;
   place-items: center;
@@ -954,7 +947,7 @@ body:has(dialog[open]) {
   gap: var(--space-2);
 }
 
-/* ---------- 16. Responsivo ---------- */
+
 @media (max-width: 1080px) {
   .hero__grid {
     grid-template-columns: 1fr;
