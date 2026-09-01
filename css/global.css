@@ -1,8 +1,3 @@
-/* ============================================================
-   |||||||||||||||| SmartGás — CSS global |||||||||||||||||||||               
-   ============================================================ */
-
-/* ---------- 1. Tokens de cor — modo Dark (padrão) ---------- */
 :root {
   --bg-canvas: #1a1c1e;
   --bg-surface: #24282c;
@@ -20,6 +15,8 @@
   --border-subtle: #3a4046;
   --border-strong: #4e555d;
 
+  --feedback-success: #4ade80;
+
   --glow-aurora-1: #7da2ff;
   --glow-aurora-2: #22d3ee;
   --glow-aurora-3: #a78bfa;
@@ -27,7 +24,6 @@
   color-scheme: dark;
 }
 
-/* ---------- 2. Tokens de cor — modo Light ---------- */
 :root[data-theme="light"] {
   --bg-canvas: #f5f7fa;
   --bg-surface: #ffffff;
@@ -45,6 +41,8 @@
   --border-subtle: #e1e7f0;
   --border-strong: #c7d0dd;
 
+  --feedback-success: #16a34a;
+
   --glow-aurora-1: #2b5fd9;
   --glow-aurora-2: #7c3aed;
   --glow-aurora-3: #0ea5e9;
@@ -52,7 +50,6 @@
   color-scheme: light;
 }
 
-/* Segue o sistema quando o usuário ainda não escolheu um tema */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     --bg-canvas: #f5f7fa;
@@ -71,6 +68,8 @@
     --border-subtle: #e1e7f0;
     --border-strong: #c7d0dd;
 
+    --feedback-success: #16a34a;
+
     --glow-aurora-1: #2b5fd9;
     --glow-aurora-2: #7c3aed;
     --glow-aurora-3: #0ea5e9;
@@ -79,7 +78,6 @@
   }
 }
 
-/* ---------- 3. Tokens de forma e espaço ---------- */
 :root {
   --radius-pill: 999px;
   --radius-card: 28px;
@@ -92,7 +90,6 @@
   --container: 1200px;
   --gutter: 24px;
 
-  /* escala de espaçamento usada nas seções do Figma */
   --space-1: 8px;
   --space-2: 12px;
   --space-3: 16px;
@@ -104,25 +101,18 @@
   --space-9: 80px;
   --space-10: 120px;
 
-  /* animação de entrada (mesmos valores do protótipo do Figma) */
   --reveal-shift: 70px;
   --reveal-duration: 1.2s;
   --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* timings do protótipo Figma (node.reactions) */
   --ease-out: cubic-bezier(0, 0, 0.58, 1);
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
-  --motion-hover: 150ms var(--ease-out);      /* SMART_ANIMATE, hover em geral */
-  --motion-overlay: 220ms var(--ease-out);    /* DISSOLVE, modal "Conta" */
-  --motion-nav: 250ms var(--ease-in-out);     /* DISSOLVE, navegação entre páginas */
-  --motion-theme: 280ms var(--ease-out);      /* DISSOLVE, troca de tema */
+  --motion-hover: 150ms var(--ease-out);
+  --motion-overlay: 220ms var(--ease-out);
+  --motion-nav: 250ms var(--ease-in-out);
+  --motion-theme: 280ms var(--ease-out);
 }
 
-/* ---------- 3b. Troca de tema (DISSOLVE / EASE_OUT / 280ms) ----------
-   O atributo data-theme-changing é posto pelo theme.js só durante a
-   troca, para que o cross-fade não interfira nas demais transições.
-   O !important garante que todo elemento use este mesmo timing na
-   janela de 280ms, em vez do seu próprio. */
 :root[data-theme-changing],
 :root[data-theme-changing] *,
 :root[data-theme-changing] *::before,
@@ -148,7 +138,6 @@
   }
 }
 
-
 *,
 *::before,
 *::after {
@@ -160,7 +149,7 @@ html {
 }
 
 body {
-  position: relative; 
+  position: relative;
   margin: 0;
   background: var(--bg-canvas);
   color: var(--text-primary);
@@ -272,7 +261,6 @@ button {
   color: var(--text-secondary)
 }
 
-
 .container {
   width: 100%;
   max-width: var(--container);
@@ -282,7 +270,7 @@ button {
 
 .page {
   position: relative;
-  z-index: 1; 
+  z-index: 1;
 }
 
 .section {
@@ -300,7 +288,6 @@ button {
 .section-head .lede {
   color: var(--text-secondary);
 }
-
 
 .eyebrow {
   display: inline-flex;
@@ -376,7 +363,6 @@ button {
   color: var(--text-primary);
 }
 
-
 .modal {
   width: min(440px, calc(100% - 32px));
   max-width: none;
@@ -395,7 +381,6 @@ button {
 .modal[open] {
   opacity: 1;
 }
-
 
 @starting-style {
   .modal[open] {
@@ -448,7 +433,6 @@ button {
   margin-top: var(--space-2);
 }
 
-
 .modal__theme {
   display: flex;
   align-items: center;
@@ -493,11 +477,9 @@ button {
   color: var(--text-primary);
 }
 
-
 body:has(dialog[open]) {
   overflow: hidden;
 }
-
 
 .navbar {
   position: sticky;
@@ -554,7 +536,6 @@ body:has(dialog[open]) {
   color: var(--brand-primary);
 }
 
-
 .nav-links a::after {
   content: "";
   width: 6px;
@@ -565,7 +546,6 @@ body:has(dialog[open]) {
   transition: opacity var(--motion-hover);
 }
 
-
 .nav-links a:hover::after {
   opacity: 0.45;
 }
@@ -574,7 +554,6 @@ body:has(dialog[open]) {
   color: var(--brand-primary);
 }
 
-
 .nav-links a[aria-current="page"]::after {
   opacity: 1;
 }
@@ -582,7 +561,6 @@ body:has(dialog[open]) {
 .nav-toggle {
   display: none;
 }
-
 
 .card {
   background: var(--bg-surface);
@@ -629,7 +607,6 @@ body:has(dialog[open]) {
   gap: var(--space-5);
 }
 
-
 .panel {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -674,7 +651,6 @@ body:has(dialog[open]) {
   color: var(--text-muted);
 }
 
-
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -693,8 +669,7 @@ body:has(dialog[open]) {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-faq);
   padding: var(--space-5);
-  /* box-shadow simula a borda de 1.5px do estado aberto sem gerar shift
-     de layout que a mudança de border-width provocaria */
+
   box-shadow: 0 0 0 0 transparent;
   transition:
     background-color var(--motion-hover),
@@ -735,7 +710,6 @@ body:has(dialog[open]) {
   font-family: 'Jost', sans-serif;
 }
 
-/* FAQ plus minus */
 .faq-item__glyph {
   flex: none;
   position: relative;
@@ -755,12 +729,12 @@ body:has(dialog[open]) {
   transition: transform var(--motion-hover);
 }
 
-.faq-item__glyph::before { 
+.faq-item__glyph::before {
   width: 20px;
   height: 2.5px;
 }
 
-.faq-item__glyph::after { 
+.faq-item__glyph::after {
   width: 2.5px;
   height: 20px;
 }
@@ -768,7 +742,6 @@ body:has(dialog[open]) {
 .faq-item.is-open .faq-item__glyph::after {
   transform: rotate(90deg);
 }
-
 
 .faq-item__panel {
   display: grid;
@@ -779,7 +752,6 @@ body:has(dialog[open]) {
 .faq-item.is-open .faq-item__panel {
   grid-template-rows: 1fr;
 }
-
 
 .faq-item__panel-inner {
   overflow: hidden;
@@ -810,7 +782,6 @@ body:has(dialog[open]) {
     transition: none;
   }
 }
-
 
 .footer {
   background: var(--bg-surface);
@@ -893,10 +864,6 @@ body:has(dialog[open]) {
   margin-top: var(--space-1);
 }
 
-/* Caixa de imagem parametrizável.
-   Cada página sobrescreve só as variáveis no seu CSS próprio:
-   --media-ratio: proporção da caixa (ex.: 500 / 450, ou "auto")
-   --media-fit:   cover = preenche e corta | contain = cabe inteira, sem corte */
 .hero__media {
   aspect-ratio: var(--media-ratio, 800 / 640);
   border-radius: var(--radius-image);
@@ -911,8 +878,6 @@ body:has(dialog[open]) {
   object-fit: var(--media-fit, cover);
 }
 
-/* Modificador: a própria imagem define a altura.
-   Use quando não souber/não quiser fixar a proporção — nunca corta. */
 .hero__media--auto {
   aspect-ratio: auto;
 }
@@ -920,7 +885,6 @@ body:has(dialog[open]) {
 .hero__media--auto img {
   height: auto;
 }
-
 
 .theme-toggle {
   display: inline-grid;
@@ -933,7 +897,6 @@ body:has(dialog[open]) {
   color: var(--text-secondary);
   font-size: 15px;
   transition: color 3s ease, background-color 1.2s ease, border-color 1.2s ease;
-
 }
 
 .theme-toggle:hover {
@@ -946,7 +909,6 @@ body:has(dialog[open]) {
   align-items: center;
   gap: var(--space-2);
 }
-
 
 @media (max-width: 1080px) {
   .hero__grid {
@@ -994,7 +956,6 @@ body:has(dialog[open]) {
     background: var(--bg-elevated);
     border: 1px solid var(--border-strong);
     margin-left: auto;
-    
   }
 
   .grid-3,

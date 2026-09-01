@@ -1,11 +1,6 @@
-/* ============================================================
-   SmartGás — interações de interface
-   Menu compacto, estado "grudado" da navbar e o FAQ sanfonado.
-   ============================================================ */
 (function () {
   "use strict";
 
-  /* ---- Menu compacto ---- */
   var toggle = document.querySelector(".nav-toggle");
   var links = document.getElementById("nav-links");
 
@@ -17,7 +12,6 @@
       toggle.setAttribute("aria-label", open ? "Abrir menu" : "Fechar menu");
     });
 
-    /* fecha ao navegar */
     links.addEventListener("click", function (event) {
       if (event.target.tagName !== "A") return;
       links.setAttribute("data-open", "false");
@@ -26,11 +20,6 @@
     });
   }
 
-  /* ---- FAQ sanfonado ----
-     Estados do component set "FAQ / Item" no Figma: Fechado (bg/surface +
-     border/subtle) e Aberto (bg/elevated + brand/primary). A altura anima
-     via grid-template-rows no CSS, então aqui só alternamos a classe e o
-     aria-expanded. */
   var questions = document.querySelectorAll(".faq-item__q");
 
   for (var q = 0; q < questions.length; q++) {
@@ -40,7 +29,6 @@
 
       var willOpen = !item.classList.contains("is-open");
 
-      /* uma resposta aberta por vez, como no protótipo */
       var others = document.querySelectorAll(".faq-item.is-open");
       for (var i = 0; i < others.length; i++) {
         if (others[i] === item) continue;
@@ -54,7 +42,6 @@
     });
   }
 
-  /* ---- Borda da navbar ao rolar ---- */
   var navbar = document.getElementById("navbar");
   if (navbar) {
     var sentinel = document.createElement("div");

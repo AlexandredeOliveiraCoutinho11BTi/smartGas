@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartGás — Instruções</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/aurora.css">
+
+  <link rel="stylesheet" href="./Instruções.css">
+  <script src="../js/theme.js"></script>
+
+  <script src="../js/aurora.js" defer></script>
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/conta.js" defer></script>
+</head>
+
+<body data-page="instrucoes" id="Smartgas">
+
+  <div class="aurora" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+    <div class="orb orb--4"></div>
+  </div>
+
+  <div class="page">
+
+    <header class="navbar" id="navbar">
+      <div class="container navbar__inner">
+        <a class="wordmark" href="#Smartgas">SmartGas.</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-links" aria-label="Abrir menu">☰</button>
+
+        <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+          <a href="../index.html">Início</a>
+          <a href="../Produto/produto.html">Produto</a>
+          <a href="./Instruções.html" aria-current="page">Instruções</a>
+          <a href="../Equipe/Equipe.html">Equipe</a>
+          <a href="../Jogo/Jogo.html">Jogo</a>
+          <a href="../Refs/Refs.html">Refs</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <button id="account-btn" class="btn--ghost" type="button">Conta</button>
+        </div>
+      </div>
+    </header>
+
+    <dialog class="modal" id="account-modal" aria-labelledby="account-title">
+      <div class="panel">
+        <span class="eyebrow">SUA CONTA</span>
+        <h2 class="t-h3" id="account-title">Você não está conectado</h2>
+        <p class="t-body-m modal__text">
+          Entre ou crie uma conta para usar o app SmartGás e o jogo The Last Meds.
+        </p>
+
+        <div class="modal__actions">
+          <a class="btn btn--primary" href="../login.html">Entrar</a>
+          <a class="btn btn--secondary" href="../cadastro.html">Criar conta</a>
+        </div>
+
+        <div class="modal__theme">
+          <span class="t-caption">Aparência</span>
+          <div class="modal__seg" role="group" aria-label="Escolha de aparência">
+            <button type="button" class="modal__opt" data-theme-option="dark">Dark</button>
+            <button type="button" class="modal__opt" data-theme-option="light">Light</button>
+          </div>
+        </div>
+
+        <button type="button" class="modal__close" data-close-modal>Fechar</button>
+      </div>
+    </dialog>
+
+    <main>
+
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow">INSTRUÇÕES</span>
+            <h1 class="t-display">Instale e use em 4 passos</h1>
+            <p class="t-body-l">
+              Um manual direto para montar o SmartGás Shield, conectar o aplicativo e
+              deixar a cozinha protegida. Siga na ordem — cada passo leva poucos minutos.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#passos">Ver passo a passo</a>
+              <a class="btn btn--secondary" href="#demonstracao">Assistir demonstração</a>
+            </div>
+          </div>
+
+          <figure class="hero__media">
+            <img src="../assets/img/Instruções/Imagem hero.svg"
+                 width="640" height="440"
+                 alt="Família na cozinha com o SmartGás Shield instalado e funcionando">
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="antes-de-comecar">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">ANTES DE COMEÇAR</span>
+            <h2 class="t-h2">Separe os itens da caixa</h2>
+            <p class="t-body-m lede">
+              Confira se todos os componentes abaixo estão em mãos antes da instalação.
+              A lista completa com valores está na página de Produto.
+            </p>
+          </div>
+
+          <ul class="checklist">
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>ESP32
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Sensor de gás MQ-2
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Micro servo motor SG90
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Válvula solenoide 12V
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Módulo relé 1 canal 5V
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Célula de carga 50 kg
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Display LCD 16x2 com I2C
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Buzzer ativo 5V
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Fonte de alimentação 12V 2A
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Protoboard 830 pontos
+            </li>
+            <li class="checklist__item">
+              <span class="checklist__dot" aria-hidden="true"></span>Kit de jumpers macho/fêmea
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="passos">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">PASSO A PASSO</span>
+            <h2 class="t-h2">Quatro passos até a cozinha protegida</h2>
+            <p class="t-body-m lede">
+              Siga na ordem abaixo. Cada etapa leva poucos minutos e não exige
+              ferramentas especiais.
+            </p>
+          </div>
+
+          <ol class="steps">
+            <li class="step-card">
+
+              <span class="step-card__num" aria-hidden="true">01</span>
+              <div class="step-card__media">
+                <img src="../assets/img/Instruções/Card/Imagem.svg"
+                     alt="Registro do botijão de gás sendo fechado">
+              </div>
+              <h3 class="step-card__title">Feche o registro do botijão</h3>
+              <p class="step-card__body">
+                Antes de qualquer instalação, feche o registro de gás do botijão
+                por segurança.
+              </p>
+            </li>
+
+            <li class="step-card">
+              <span class="step-card__num" aria-hidden="true">02</span>
+              <div class="step-card__media">
+                <img src="../assets/img/Instruções/Card/Imagem-1.svg"
+                     alt="Válvula solenoide conectada ao módulo relé">
+              </div>
+              <h3 class="step-card__title">Instale a válvula solenoide</h3>
+              <p class="step-card__body">
+                Encaixe a válvula solenoide na saída do botijão, conectando-a ao
+                módulo relé do SmartGás Shield.
+              </p>
+            </li>
+
+            <li class="step-card">
+              <span class="step-card__num" aria-hidden="true">03</span>
+              <div class="step-card__media">
+                <img src="../assets/img/Instruções/Card/Imagem-2.svg"
+                     alt="Plugue da fonte de alimentação e tomada">
+              </div>
+              <h3 class="step-card__title">Ligue na tomada</h3>
+              <p class="step-card__body">
+                Conecte a fonte de alimentação e ligue o dispositivo — o sensor MQ-2
+                inicia o aquecimento automático.
+              </p>
+            </li>
+
+            <li class="step-card">
+              <span class="step-card__num" aria-hidden="true">04</span>
+              <div class="step-card__media">
+                <img src="../assets/img/Instruções/Card/Imagem-3.svg"
+                     alt="Celular exibindo o painel do aplicativo SmartGás">
+              </div>
+              <h3 class="step-card__title">Conecte ao aplicativo</h3>
+              <p class="step-card__body">
+                Abra o app, encontre o dispositivo na rede e finalize o pareamento
+                para acompanhar os alertas.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           SEÇÃO 3 — Vídeo demonstrativo (Figma 442:2 / 443:2)
+
+           COMO COLOCAR O VÍDEO — passo a passo:
+
+           1. Salve o arquivo em  assets/video/demonstracao.mp4
+              (crie a pasta "video" dentro de assets). O nome pode ser
+              outro, desde que você troque o src do <source> abaixo.
+              MP4 (codec H.264) toca em todos os navegadores.
+
+           2. Opcional, mas recomendado: salve também um print do
+              primeiro quadro em assets/img/Instruções/capa-video.jpg
+              e coloque no atributo poster="" — é a imagem que aparece
+              antes de a pessoa dar play, no lugar de um quadro preto.
+
+           3. Troque a classe da <figure> para
+              class="video-player video-player--live"
+              (deixa a borda sólida, em vez de tracejada) e apague o
+              bloco .video-player__placeholder logo abaixo.
+
+           O que cada atributo do <video> faz:
+             controls  → mostra os botões de play, volume, tela cheia
+             preload="metadata" → baixa só a duração/dimensões ao abrir
+                         a página, não o vídeo inteiro (economiza dados)
+             playsinline → no iPhone, toca dentro da página em vez de
+                         abrir o player em tela cheia
+             poster    → imagem de capa antes do play
+
+           SE O VÍDEO ESTIVER NO YOUTUBE em vez de um arquivo local,
+           apague o <video> inteiro e use no lugar dele:
+
+           <iframe class="video-player__media"
+                   src="https://www.youtube.com/embed/ID_DO_VIDEO"
+                   title="Demonstração do SmartGás"
+                   allow="accelerometer; autoplay; clipboard-write;
+                          encrypted-media; gyroscope; picture-in-picture"
+                   allowfullscreen></iframe>
+
+           (o ID é o que vem depois de "watch?v=" no endereço do vídeo)
+           ========================================================== -->
+      <section class="section" id="demonstracao">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">DEMONSTRAÇÃO</span>
+            <h2 class="t-h2">Veja o sistema funcionando na prática</h2>
+            <p class="t-body-m lede">
+              O vídeo abaixo percorre exatamente os quatro passos deste manual, do
+              registro fechado até o primeiro alerta chegando no celular.
+            </p>
+          </div>
+
+          <figure class="video-player">
+
+            <!-- Camada de baixo: o "espaço reservado" do Figma.
+                 Continua aparecendo enquanto o arquivo do vídeo não
+                 existir. Apague este bloco quando o vídeo entrar. -->
+            <div class="video-player__placeholder">
+              <span class="video-player__badge" aria-hidden="true"></span>
+              <p class="video-player__title">Espaço reservado para o vídeo demonstrativo</p>
+              <p class="video-player__meta">1920 × 1080 · 16:9 · MP4 · duração estimada 2 min</p>
+            </div>
+
+            <!-- Camada de cima: o vídeo de verdade. -->
+            <video class="video-player__media"
+                   controls
+                   preload="metadata"
+                   playsinline>
+              <source src="../assets/video/demonstracao.mp4" type="video/mp4">
+              <!-- Texto de reserva: só aparece em navegador sem suporte a vídeo -->
+              Seu navegador não consegue exibir vídeos.
+              <a href="../assets/video/demonstracao.mp4">Baixe o arquivo aqui.</a>
+            </video>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <span class="wordmark">SmartGas.</span>
+          <p class="t-body-s">
+            Tecnologia IoT para tornar a cozinha mais segura, conectada e inteligente.
+          </p>
+        </div>
+
+        <nav class="footer__sitemap" aria-label="Mapa do site">
+          <a href="../index.html">Início</a>
+          <a href="../Produto/produto.html">Produto</a>
+          <a href="./Instruções.html">Instruções</a>
+          <a href="../Equipe/Equipe.html">Equipe</a>
+          <a href="../Jogo/Jogo.html">Jogo</a>
+          <a href="../Refs/Refs.html">Refs</a>
+        </nav>
+
+        <span class="footer__meta">TCC SmartGás • SafeStep • 2026</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

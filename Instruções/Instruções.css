@@ -1,0 +1,219 @@
+.hero__media {
+  --media-ratio: 640 / 440;
+  --media-fit: cover;
+}
+
+.checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.checklist__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 20px 12px 18px;
+
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.checklist__dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--feedback-success);
+}
+
+@media (max-width: 560px) {
+  .checklist__item {
+    white-space: normal;
+  }
+}
+
+.steps {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.step-card {
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-faq);
+  padding: 28px 28px 32px;
+
+  transition: transform 0.25s var(--reveal-ease), border-color 0.25s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+}
+
+.step-card__num {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--brand-primary);
+  color: var(--text-on-brand);
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.step-card__media {
+  height: 190px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.step-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.step-card__title {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.step-card__body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 1040px) {
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .steps { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   VÍDEO DEMONSTRATIVO
+   ============================================================
+   No Figma este bloco é o "Player / Reservado": uma moldura de
+   borda TRACEJADA (é o jeito do design dizer "o vídeo entra aqui")
+   com um selo de play e dois textos no centro.
+
+   Montagem em duas camadas dentro da mesma moldura:
+     - camada de baixo: o placeholder (o que você vê agora)
+     - camada de cima : o <video> de verdade
+   Quando o arquivo do vídeo existir, ele pinta por cima e some o
+   placeholder. Se o arquivo faltar, o <video> fica transparente e
+   o placeholder continua aparecendo — nunca fica um quadrado preto.
+   ------------------------------------------------------------ */
+.video-player {
+  position: relative;       /* âncora para as camadas absolutas de dentro */
+  aspect-ratio: 16 / 9;     /* proporção do vídeo; a altura sai sozinha */
+  margin: 0;                /* <figure> vem com margem do navegador */
+
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-subtle);  /* tracejada, como no Figma */
+  border-radius: var(--radius-card);        /* 28px */
+  overflow: hidden;
+}
+
+/* Quando o vídeo real estiver no ar, troque a classe no HTML para
+   "video-player video-player--live" e a borda vira sólida. */
+.video-player--live {
+  border-style: solid;
+}
+
+/* Camada de baixo: o aviso de espaço reservado. */
+.video-player__placeholder {
+  position: absolute;
+  inset: 0;                 /* gruda nos 4 lados da moldura */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  text-align: center;
+  pointer-events: none;     /* não rouba o clique dos controles do vídeo */
+}
+
+/* O selo de play, feito só com CSS — sem arquivo de imagem, então
+   ele acompanha o tema claro/escuro sozinho. */
+.video-player__badge {
+  display: grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+}
+
+/* O triângulo: um elemento de largura/altura zero cujas BORDAS
+   formam o desenho. A borda esquerda é colorida e as de cima e de
+   baixo são transparentes — o que sobra é uma seta apontando para
+   a direita. */
+.video-player__badge::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 15px 0 15px 24px;   /* cima | direita | baixo | esquerda */
+  border-color: transparent transparent transparent var(--brand-primary);
+  margin-left: 6px;                 /* compensa o peso visual do triângulo */
+}
+
+.video-player__title {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.video-player__meta {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Camada de cima: o vídeo. Fica por cima do placeholder (z-index)
+   e ocupa a moldura inteira. */
+.video-player__media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* preenche a moldura de 16/9 sem distorcer */
+  background: transparent;  /* sem arquivo, deixa o placeholder aparecer */
+  border: 0;                /* zera a borda que o <iframe> traz de fábrica */
+}

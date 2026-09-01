@@ -10,13 +10,12 @@
   });
 
   modal.addEventListener("click", function (event) {
-    /* clique no backdrop reporta o próprio <dialog> como alvo */
+
     if (event.target === modal || event.target.closest("[data-close-modal]")) {
       modal.close();
     }
   });
 
-  /* ---- Aparência ---- */
   var options = modal.querySelectorAll("[data-theme-option]");
   var theme = window.SmartGasTheme;
   if (!theme) return;
