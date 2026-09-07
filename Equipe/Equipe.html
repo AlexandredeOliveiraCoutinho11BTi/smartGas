@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartGás</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/aurora.css">
+  <link rel="stylesheet" href="./produto.css">
+  <script src="../js/theme.js"></script>
+
+  <script src="../js/aurora.js" defer></script>
+  <script src="../js/ui.js" defer></script>
+  <script src="../js/conta.js" defer></script>
+</head>
+
+<body data-page="produto" id="Smartgas">
+
+  <div class="aurora" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+    <div class="orb orb--4"></div>
+  </div>
+
+  <div class="page">
+
+    <header class="navbar" id="navbar">
+      <div class="container navbar__inner">
+        <a class="wordmark" href="#Smartgas">SmartGas.</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false"
+                aria-controls="nav-links" aria-label="Abrir menu">☰</button>
+
+        <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
+          <a href="../index.html">Início</a>
+          <a href="produto.html">Produto</a>
+          <a href="../Instruções/Instruções.html">Instruções</a>
+          <a href="../Equipe/Equipe.html" aria-current="page">Equipe</a>
+          <a href="../Jogo/Jogo.html">Jogo</a>
+          <a href="../Refs/Refs.html">Refs</a>
+        </nav>
+
+        <div class="navbar__actions">
+          <button id="account-btn" class="btn--ghost" type="button">Conta</button>
+        </div>
+      </div>
+    </header>
+
+    <dialog class="modal" id="account-modal" aria-labelledby="account-title">
+      <div class="panel">
+        <span class="eyebrow">SUA CONTA</span>
+        <h2 class="t-h3" id="account-title">Você não está conectado</h2>
+        <p class="t-body-m modal__text">
+          Entre ou crie uma conta para usar o app SmartGás e o jogo The Last Meds.
+        </p>
+
+        <div class="modal__actions">
+          <a class="btn btn--primary" href="../login.html">Entrar</a>
+          <a class="btn btn--secondary" href="../cadastro.html">Criar conta</a>
+        </div>
+
+        <div class="modal__theme">
+          <span class="t-caption">Aparência</span>
+          <div class="modal__seg" role="group" aria-label="Escolha de aparência">
+            <button type="button" class="modal__opt" data-theme-option="dark">Dark</button>
+            <button type="button" class="modal__opt" data-theme-option="light">Light</button>
+          </div>
+        </div>
+
+        <button type="button" class="modal__close" data-close-modal>Fechar</button>
+      </div>
+    </dialog>
+
+    <main>
+        <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow">SafeStep</span>
+            <h1 class="t-display">Quem somos?</h1>
+            <p class="t-body-l">
+              Somos uma equipe de estudantes desenvolvendo soluções tecnológicas com ofoc em inovação, impacto social e aprendizado prático
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#team">Conheça a equipe</a>
+              <a class="btn btn--secondary" href="#História">Saiba mais</a>
+            </div>
+          </div>
+
+           <figure class="hero__media hero__media--auto">
+
+            <img src="../assets//img/Equipe/Imagem hero.svg"
+            width= '550' height = '460'
+                 alt="Imagem de uma equipe de estudantes trabalhando em um projeto de tecnologia"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="História">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">EQUIPE</span>
+            <h2 class="t-h2">Pessoas por trás do projeto</h2>
+            <p class="t-body-m lede">
+              Integrantes da equipe SafeStep.
+            </p>
+
+            <div class="grid-3">
+            <span class="card">
+                <img  class = "card__img" src="../assets/img/Equipe/Integrante/Foto.svg" width="100" height="100" alt="Foto de Alexandre, co-fundador da equipe SafeStep e desenvolvedor do TCC SmartGás">
+              <h3 class="t-h4">Alexandre</h3>
+              <p class="insta">@og.alee_</p>
+              <p class="t-body-s card__body">
+                Co-fundador da equipe SafeStep e desenvolvedor do TCC SmartGás.
+              </p>
+            </span>
+
+            <span class="card">
+                <img class = "card__img" src="../assets/img/Equipe/Integrante/Rectangle 111.svg" width="100" height="100" alt="Foto de Arthur, fundador da equipe SafeStep e desenvolvedor chefe do TCC SmartGás">
+              <h3 class="t-h4">Arthur</h3>
+              <p class="insta">@arthmldyy</p>
+              <p class="t-body-s card__body">
+                Fundador da equipe SafeStep e desenvolvedor chefe do TCC SmartGás.
+              </p>
+            </span>
+
+            <span class="card">
+                <img  class = "card__img" src="../assets/img/Equipe/Integrante/Rectangle 107.svg" width="100" height="100" alt="Foto de Daniel, pesquisador do TCC SmartGás">
+              <h3 class="t-h4">Daniel</h3>
+              <p class="insta">@danielrhalley</p>
+              <p class="t-body-s card__body">
+                Pesquisador do TCC SmartGás.
+              </p>
+            </span>
+
+            <span class="card">
+                <img  class = "card__img" src="../assets/img/Equipe/Integrante/Rectangle 109.svg" width="100" height="100" alt="Foto de Fabiano, desenvolvedor do TCC SmartGás">
+              <h3 class="t-h4">Fabiano</h3>
+              <p class="insta">@fabii.xt_</p>
+              <p class="t-body-s card__body">
+                Desenvolvedor do TCC SmartGás.
+              </p>
+            </span>
+
+            <span class="card">
+                <img  class = "card__img" src="../assets/img/Equipe/Integrante/Rectangle 110.svg" width="100" height="100" alt="Foto de Rhoger, pesquisador do TCC SmartGás">
+              <h3 class="t-h4">Rhoger</h3>
+              <p class="insta">@rhogersouza</p>
+              <p class="t-body-s card__body">
+                Pesquisador do TCC SmartGás.
+              </p>
+            </span>
+          </div>
+          </div>
+    </main>
