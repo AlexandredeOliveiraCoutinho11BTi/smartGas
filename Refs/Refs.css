@@ -1,0 +1,57 @@
+.hero__media {
+    --media-ratio: 640 / 440;
+    --media-fit: contain;
+}
+
+.eyebrow-validation {
+    display: block;
+    width: min(675px, 100%);
+    margin-inline: auto;
+    padding: 20px 31px 28px;
+
+    color: var(--brand-on-soft);
+    background: var(--brand-soft);
+
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-card);
+}
+
+.eyebrow-validation__title {
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 var(--space-2);
+}
+
+.eyebrow-validation .t-body-m {
+    color: var(--brand-on-soft);
+    margin: 0;
+}
+
+
+.refs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+    width: 100%;
+}
+
+.refs-grid > .card {
+    width: 100%;
+    min-width: 0;
+}
+
+
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+@media (max-width: 700px) {
+    .refs-grid {
+        grid-template-columns: 1fr;
+    }
+}
